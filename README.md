@@ -23,6 +23,7 @@ sendo eles : GET, POST, DELETE E PUT
 
 ## Formato 🔎
 Nossa tabela
+    
     "ID: . . . ." 
     
     "NOME: . . . ." 
@@ -30,5 +31,6 @@ Nossa tabela
     "EMAIL: . . . ." 
     
     "SENHA: . . . ." 
+    
 # Desenvolvedor
 ### Lucas Roberto
