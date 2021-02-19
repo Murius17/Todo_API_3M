@@ -38,13 +38,13 @@ module.exports = class UsuariosDAO {
     updateUsuarios(parametro)
     {
         return new Promise((resolve, reject)=>{
-        
-        this.bd.run('UPDATE USUARIOS SET NOME = ?, EMAIL = ?, SENHA = ? WHERE ID = ?',parametro , (err, linhas)=>{
-            if (err) reject ('Não foi possível fazer a atualização');
-            else resolve('O usuario foi atualizado com sucesso');
-        })
+            this.bd.run('UPDATE USUARIOS SET NOME = ?, EMAIL = ?, SENHA = ? WHERE id = ?', parametro, (err, linhas)=>{
+                if (err) reject ('Não foi possível fazer a atualização');
+                else resolve('O usuario foi atualizado com sucesso');
+            })
         })
     }
+
    excluiUsuario(parametro){
        return new Promise((resolve, reject)=>{
            this.bd.run('DELETE FROM USUARIOS WHERE id = ?', parametro, (err, rows)=>{

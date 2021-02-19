@@ -49,10 +49,10 @@ module.exports = (app, bd) =>
     app.put('/usuarios/:id', async (req, resp) => {
         let parametro = [req.body.nome, req.body.email, req.body.senha, req.params.id];
         try{
-        const atualizaUsuario = await usuariosDAO.updatesUsuarios(parametro);
+        const atualizaUsuario = await usuariosDAO.updateUsuarios(parametro);
       resp.send(atualizaUsuario);
         } catch {
-      resp.send(erro);
+      resp.send(err);
 
     }
         

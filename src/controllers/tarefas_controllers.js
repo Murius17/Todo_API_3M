@@ -1,23 +1,52 @@
+const TarefasDao = require('../DAO/tarefas_DAO');
 module.exports = (app) => 
 {
-    app.get('/tarefas', (req,resp) =>{
-        resp.send('teste do banco tarefas')
+    const tarefasDAO = new TarefasDao(bd);
+
+
+    app.get('/tarefas', async (req,resp) =>{
+        try
+        { const tarefas = await tarefasDAO.allTarefas()
+            resp.send(tarefas)} 
+        catch (err) {resp.send (err)            
+        }
+        
     });
 
-    app.get('/tarefas:id', (req, resp) =>{
-        resp.send('usuarios certo');
+    app.get('/tarefas:id', async (req, resp) =>{
+        try
+        { const tarefasId = await tarefasDAO.sendParamsTarefas(req.params.id);
+            resp.send(tarefasId)} 
+        catch (err) {resp.send (err)            
+        }
+        
     });
 
-    app.post('/tarefas', (req, resp) =>{
-        resp.send('usuario inserido com sucesso');
+    app.post('/tarefas', async (req, resp) =>{
+        try
+        { const tarefasInseridas = await tarefasDAO.insertTarefas([req.body.titulo, req.body.descricao, req.body.status, req.body.datacriacao, req.body.id_usuario]);
+            resp.send(tarefasInseridas)} 
+        catch (err) {resp.send (err)            
+        }
+        
     });
 
-    app.delete('/tarefas:id', (req, resp) => {
-        resp.send('usuario deletado com sucesso');
+    app.delete('/tarefas:id', async (req, resp) => {
+        try
+        { const tarefasDeletadas = await tarefasDAO.deleteTarefas(req.params.id);
+            resp.send(tarefasDeletadas)} 
+        catch (err) {resp.send (err)            
+        }
+        
     });
 
-    app.put('/tarefas:id', (req, resp) => {
-        resp.send('usuario atualizado com sucesso');
+    app.put('/tarefas:id', async (req, resp) => {
+        try
+        { const tarefasUpadas = await tarefasDAO.updateTarefas([req.body.titulo, req.body.descricao, req.body.status, req.body.datacriacao, req.body.id_usuario, req.params.id]);
+            resp.send(tarefasUpadas)} 
+        catch (err) {resp.send (err)            
+        }
+        
     });
 
     
