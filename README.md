@@ -14,16 +14,21 @@
 Utilize os comandos:
 
 [ npm install ]-> no terminal e dentro da pasta que está com o projeto aberto, e ele instalará todas as dependências necessárias pro projeto.
+
 [ npm start ]-> vai iniciar o NODEMOM, facilitando a inicialiazação do servidor
 
 ## ROTAS  🛣️
 As rotas utilizadas, foram para a criação de uma API REST. Que usa os verbos HTTP
 sendo eles : GET, POST, DELETE E PUT
+
 ## Formato 🔎
 Nossa tabela
     "ID: . . . ." 
+    
     "NOME: . . . ." 
+    
     "EMAIL: . . . ." 
-"SENHA: . . . ." 
+    
+    "SENHA: . . . ." 
 # Desenvolvedor
 ### Lucas Roberto
