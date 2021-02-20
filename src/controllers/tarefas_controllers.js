@@ -1,5 +1,5 @@
 const TarefasDao = require('../DAO/tarefas_DAO');
-module.exports = (app) => 
+module.exports = (app, bd) => 
 {
     const tarefasDAO = new TarefasDao(bd);
 
@@ -13,9 +13,10 @@ module.exports = (app) =>
         
     });
 
-    app.get('/tarefas:id', async (req, resp) =>{
+    app.get('/tarefas/:id', async (req, resp) =>{
+        let buscando = req.params.id;
         try
-        { const tarefasId = await tarefasDAO.sendParamsTarefas(req.params.id);
+        { const tarefasId = await tarefasDAO.sendParamsTarefas(buscando);
             resp.send(tarefasId)} 
         catch (err) {resp.send (err)            
         }
@@ -31,16 +32,17 @@ module.exports = (app) =>
         
     });
 
-    app.delete('/tarefas:id', async (req, resp) => {
+    app.delete('/tarefas/:id', async (req, resp) => {
+        let deletando = req.params.id;
         try
-        { const tarefasDeletadas = await tarefasDAO.deleteTarefas(req.params.id);
+        { const tarefasDeletadas = await tarefasDAO.deleteTarefas(req.deletando.id);
             resp.send(tarefasDeletadas)} 
         catch (err) {resp.send (err)            
         }
         
     });
 
-    app.put('/tarefas:id', async (req, resp) => {
+    app.put('/tarefas/:id', async (req, resp) => {
         try
         { const tarefasUpadas = await tarefasDAO.updateTarefas([req.body.titulo, req.body.descricao, req.body.status, req.body.datacriacao, req.body.id_usuario, req.params.id]);
             resp.send(tarefasUpadas)} 
